@@ -25,7 +25,8 @@ val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")
 
-object `mill-scapegoat` extends BuildInfo
+object `mill-scapegoat`
+    extends BuildInfo
     with GitVersionedPublishModule
     with ScalaModule
     with SonatypeCentralPublishModule
@@ -89,7 +90,7 @@ object `mill-scapegoat` extends BuildInfo
     override def mvnDeps =
       Seq(
         mvn"com.lihaoyi::mill-testkit:$millVersion",
-        mvn"org.scalatest::scalatest::3.2.18",
+        mvn"org.scalatest::scalatest::3.2.19",
       )
 
     // Mill executable configured for cross testing
