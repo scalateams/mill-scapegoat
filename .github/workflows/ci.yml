@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout current branch
+        uses: actions/checkout@v5
+      - name: Pull all history with tags for correct versioning
+        run: git fetch --prune --unshallow
+      - name: Run checks
+        run: ./mill __.checkStyle + __.test + __.publishLocal

@@ -1,0 +1,13 @@
+//| repositories:
+//| - file://${MILL_USER_TEST_REPO}
+//| mvnDeps:
+//| - org.scalateams::mill-scapegoat::$MILL_PLUGIN_VERSION
+
+import org.scalateams.mill.scapegoat.ScapegoatModule
+import mill.scalalib.*
+
+object `package` extends ScapegoatModule {
+  def scalaVersion     = "2.13.18"
+  def scalacOptions    = super.scalacOptions() ++ Seq("-Ywarn-unused")
+  def scapegoatVersion = "3.2.4"
+}
