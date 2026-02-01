@@ -25,13 +25,14 @@ val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")
 
-object `mill-scapegoat` extends BuildInfo
+object `mill-scapegoat`
+    extends BuildInfo
     with GitVersionedPublishModule
     with ScalaModule
     with SonatypeCentralPublishModule
     with StyleModule {
 
-  val millVersion = "1.0.0"
+  val millVersion = "1.0.6"
 
   override def artifactName = s"${ProjectName}_mill1"
 
