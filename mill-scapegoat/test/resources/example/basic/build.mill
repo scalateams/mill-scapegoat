@@ -7,84 +7,53 @@ import org.scalateams.mill.scapegoat.ScapegoatModule
 import mill.scalalib.*
 
 object `package` extends ScapegoatModule {
-  def scalaVersion = "2.13.18"
+  def scalaVersion  = "2.13.18"
   def scalacOptions = super.scalacOptions() ++ Seq("-Ywarn-unused")
 
-  def scapegoatVersion = "3.2.4"
+  def scapegoatVersion             = "3.2.4"
   def scapegoatDisabledInspections = Seq("VariableShadowing", "ZeroNumerator")
-  def scapegoatEnabledInspections = Seq("VarCouldBeVal", "OptionGet")
-  def scapegoatIgnoredFiles = Seq(".*/Bar.scala")
-  def scapegoatReportFormats = Seq("xml", "html")
+  def scapegoatEnabledInspections  = Seq("VarCouldBeVal", "OptionGet")
+  def scapegoatIgnoredFiles        = Seq(".*/Bar.scala")
+  def scapegoatReportFormats       = Seq("xml", "html")
 }
 
-/** Usage
-
-> ./mill show __.scapegoatConsoleOutput
-true
-
-> ./mill show __.scapegoatDisabledInspections
-[
-  "VariableShadowing",
-  "ZeroNumerator"
-]
-
-> ./mill show __.scapegoatEnabled
-true
-
-> ./mill show __.scapegoatEnabledInspections
-[
-  "VarCouldBeVal",
-  "OptionGet"
-]
-
-> ./mill show __.scapegoatIgnoredFiles
-[
-  ".../Bar.scala"
-]
-
-> ./mill show __.scapegoatMinimalInspectionLevel
-"info"
-
-> ./mill show __.scapegoatOutput
-".../out/scapegoatOutput.dest"
-
-> ./mill show __.scapegoatReportFormats
-[
-  "xml",
-  "html"
-]
-
-> ./mill show __.scapegoatSourcePrefix
-"src"
-
-> ./mill show __.scapegoatScalacOptions
-[
-  "-Xplugin:.../v1/https/repo1.maven.org/maven2/com/sksamuel/scapegoat/scalac-scapegoat-plugin_2.13.18/3.2.4/scalac-scapegoat-plugin_2.13.18-3.2.4.jar",
-  "-P:scapegoat:dataDir:.../out/scapegoatOutput.dest",
-  "-P:scapegoat:consoleOutput:true",
-  "-P:scapegoat:verbose:true",
-  "-P:scapegoat:sourcePrefix:src",
-  "-P:scapegoat:minimalWarnLevel:info",
-  "-P:scapegoat:disabledInspections:VariableShadowing:ZeroNumerator",
-  "-P:scapegoat:enabledInspections:VarCouldBeVal:OptionGet",
-  "-P:scapegoat:ignoredFiles:.../Bar.scala",
-  "-P:scapegoat:reports:xml:html"
-]
-
-> ./mill show __.scapegoatVerbose
-true
-
-> ./mill show __.scapegoatVersion
-"3.2.4"
-
-> ./mill __.compile
-...
-[warn]     var who  = "world"                      // triggers `VarCouldBeVal`
-[warn]         ^
-[info] [scapegoat] 2 activated inspections
-[info] [scapegoat] List(.../Bar.scala) ignored file patterns
-[warn] [scapegoat] Analysis complete: 2 files - 0 errors 1 warns 0 infos
-...
-done compiling
-
-*/
+/**
+ * Usage
+ *
+ * > ./mill show __.scapegoatConsoleOutput true
+ *
+ * > ./mill show __.scapegoatDisabledInspections [ "VariableShadowing",
+ * "ZeroNumerator" ]
+ *
+ * > ./mill show __.scapegoatEnabled true
+ *
+ * > ./mill show __.scapegoatEnabledInspections [ "VarCouldBeVal", "OptionGet" ]
+ *
+ * > ./mill show __.scapegoatIgnoredFiles [ ".../Bar.scala" ]
+ *
+ * > ./mill show __.scapegoatMinimalInspectionLevel "info"
+ *
+ * > ./mill show __.scapegoatOutput ".../out/scapegoatOutput.dest"
+ *
+ * > ./mill show __.scapegoatReportFormats [ "xml", "html" ]
+ *
+ * > ./mill show __.scapegoatSourcePrefix "src"
+ *
+ * > ./mill show __.scapegoatScalacOptions [
+ * "-Xplugin:.../v1/https/repo1.maven.org/maven2/com/sksamuel/scapegoat/scalac-scapegoat-plugin_2.13.18/3.2.4/scalac-scapegoat-plugin_2.13.18-3.2.4.jar",
+ * "-P:scapegoat:dataDir:.../out/scapegoatOutput.dest",
+ * "-P:scapegoat:consoleOutput:true", "-P:scapegoat:verbose:true",
+ * "-P:scapegoat:sourcePrefix:src", "-P:scapegoat:minimalWarnLevel:info",
+ * "-P:scapegoat:disabledInspections:VariableShadowing:ZeroNumerator",
+ * "-P:scapegoat:enabledInspections:VarCouldBeVal:OptionGet",
+ * "-P:scapegoat:ignoredFiles:.../Bar.scala", "-P:scapegoat:reports:xml:html" ]
+ *
+ * > ./mill show __.scapegoatVerbose true
+ *
+ * > ./mill show __.scapegoatVersion "3.2.4"
+ *
+ * > ./mill __.compile ... [warn] var who = "world" // triggers `VarCouldBeVal`
+ * [warn] ^ [info] [scapegoat] 2 activated inspections [info] [scapegoat]
+ * List(.../Bar.scala) ignored file patterns [warn] [scapegoat] Analysis
+ * complete: 2 files - 0 errors 1 warns 0 infos ... done compiling
+ */
