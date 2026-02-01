@@ -25,7 +25,8 @@ val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")
 
-object `mill-scapegoat` extends BuildInfo
+object `mill-scapegoat`
+    extends BuildInfo
     with GitVersionedPublishModule
     with ScalaModule
     with SonatypeCentralPublishModule
