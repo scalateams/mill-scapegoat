@@ -19,10 +19,10 @@ import mill.scalalib.scalafmt.*
 
 val Description  = "A scapegoat plugin for Mill build tool"
 val Developers   = Seq(
-  Developer("scalateams", "ScalaTeams", "https://github.com/scalateams"),
+  Developer("scalateams", "ScalaTeams", "https://github.com/scalateams", email = "team@scalateams.com"),
 )
 val Licences     = Seq(License.`Apache-2.0`)
-val Organization = "org.scalateams"
+val Organization = "com.scalateams"
 val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")

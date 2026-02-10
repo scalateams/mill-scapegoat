@@ -1,7 +1,7 @@
 //| repositories:
 //| - file://${MILL_USER_TEST_REPO}
 //| mvnDeps:
-//| - org.scalateams::mill-scapegoat::$MILL_PLUGIN_VERSION
+//| - com.scalateams::mill-scapegoat::$MILL_PLUGIN_VERSION
 
 import org.scalateams.mill.scapegoat.ScapegoatModule
 import mill.scalalib.*
