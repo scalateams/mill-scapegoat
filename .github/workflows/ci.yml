@@ -4,19 +4,20 @@ run-name: >-
       github.event_name == 'create' && format('CI: release {0}', github.ref_name) ||
       format('CI: branch push') }}
 on:
-  create:
-    tags:
-      - v*
+  pull_request:
   push:
     branches:
       - main
-  pull_request:
+  release:
+    types:
+      - published
+      - edited
 jobs:
   ci:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      FORCE_COLOR: '1'
+      FORCE_COLOR: "1"
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v6.0.2
