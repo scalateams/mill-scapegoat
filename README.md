@@ -52,8 +52,8 @@ override def scalacOptions = super.scalacOptions() ++ Seq("some", "options")
 
 Before committing run:
 
-```shell script
-> ./mill __.style + __.test + __.publishLocal
+```console
+./mill __.style + __.test + __.publishLocal
 ```
 
 All contributions are welcome!
