@@ -20,7 +20,7 @@ object project extends ScalaModule with ScapegoatModule {
 }
 ```
 
-```shell script
+```shell-script
 > ./mill project.compile
 Compiling compiler interface...
 ...
@@ -53,7 +53,7 @@ override def scalacOptions = super.scalacOptions() ++ Seq("some", "options")
 Before committing run:
 
 ```console
-./mill __.style + __.test + __.publishLocal
+> ./mill __.style + __.test + __.publishLocal
 ```
 
 All contributions are welcome!
