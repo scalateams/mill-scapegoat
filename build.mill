@@ -25,7 +25,8 @@ val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")
 
-object `mill-scapegoat` extends BuildInfo
+object `mill-scapegoat`
+    extends BuildInfo
     with GitVersionedPublishModule
     with ScalaModule
     with SonatypeCentralPublishModule
@@ -75,7 +76,7 @@ object `mill-scapegoat` extends BuildInfo
       "-Wunused:all",
       "-Xfatal-warnings",
     )
-  override def scalaVersion  = "3.7.4"
+  override def scalaVersion  = "3.8.1"
 
   object test extends ScalaTests with TestModule.ScalaTest {
 
