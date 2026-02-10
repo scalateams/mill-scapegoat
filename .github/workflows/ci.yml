@@ -1,18 +1,23 @@
 name: CI
+run-name: >-
+  ${{ github.event_name == 'pull_request' && format('CI: pull request checks') ||
+      github.event_name == 'release' && format('CI: release {0}', github.ref_name) ||
+      format('CI: branch merge checks') }}
 on:
-  create:
-    tags:
-      - v*
+  pull_request:
   push:
     branches:
       - main
-  pull_request:
+  release:
+    types:
+      - published
+      - edited
 jobs:
   ci:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      FORCE_COLOR: '1'
+      FORCE_COLOR: "1"
     steps:
       - name: Checkout current branch
         uses: actions/checkout@v6.0.2
@@ -28,10 +33,10 @@ jobs:
       - name: Run checks
         run: ./mill __.checkStyle + __.test + __.publishLocal
       - name: Publish artifacts
-        if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v')
         env:
-          MILL_PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
-          MILL_PGP_SECRET_BASE64: ${{ secrets.PGP_SECRET }}
-          MILL_SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
-          MILL_SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          MILL_PGP_PASSPHRASE: ${{ secrets.MILL_PGP_PASSPHRASE }}
+          MILL_PGP_SECRET_BASE64: ${{ secrets.MILL_PGP_SECRET_BASE64 }}
+          MILL_SONATYPE_PASSWORD: ${{ secrets.MILL_SONATYPE_PASSWORD }}
+          MILL_SONATYPE_USERNAME: ${{ secrets.MILL_SONATYPE_USERNAME }}
         run: ./mill mill.scalalib.SonatypeCentralPublishModule/
