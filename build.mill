@@ -78,7 +78,7 @@ object `mill-scapegoat`
       "-Wunused:all",
       "-Xfatal-warnings",
     )
-  override def scalaVersion  = "3.7.4"
+  override def scalaVersion  = "3.8.1"
 
   object test extends ScalaTests with TestModule.ScalaTest {
 
