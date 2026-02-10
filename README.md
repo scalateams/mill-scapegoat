@@ -20,8 +20,8 @@ object project extends ScalaModule with ScapegoatModule {
 }
 ```
 
-```shell-script
-> ./mill project.compile
+```console
+$ ./mill project.compile
 Compiling compiler interface...
 ...
 [warn] /project/project/src/MyClass.scala:6:9: local var who in method main is never updated: consider using immutable val
