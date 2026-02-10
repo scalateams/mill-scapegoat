@@ -9,7 +9,7 @@ A [scapegoat](https://github.com/sksamuel/scapegoat) plugin for Mill build tool.
 //| mvnDeps:
 //| - org.scalateams::mill-scapegoat::0.1.0
 import org.scalateams.mill.scapegoat.ScapegoatModule
-import mill.scalalib._
+import mill.scalalib.*
 
 object project extends ScalaModule with ScapegoatModule {
 
