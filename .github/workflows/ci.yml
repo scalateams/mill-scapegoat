@@ -5,13 +5,18 @@ run-name: >-
       format('CI: branch merge checks') }}
 on:
   pull_request:
+    types:
+      - opened
+      - ready_for_review
+      - reopened
+      - synchronize
   push:
     branches:
       - main
   release:
     types:
-      - published
       - edited
+      - published
 jobs:
   ci:
     runs-on: ubuntu-latest
