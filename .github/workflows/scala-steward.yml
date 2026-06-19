@@ -11,12 +11,17 @@ jobs:
       id-token: write
       pull-requests: write
     steps:
-      - name: Checkout repository
+      - name: Checkout current branch
         uses: actions/checkout@v6.0.3
         with:
           fetch-depth: 0
+      - name: Setup JDK
+        uses: actions/setup-java@v5.3.0
+        with:
+          java-version: 17
+          distribution: temurin
       - name: Run Scala-Steward
-        uses: scala-steward-org/scala-steward-action@v2.88.0
+        uses: scala-steward-org/scala-steward-action@v2.84.0
         with:
           branches: main
           mill-version: 1.1.6
