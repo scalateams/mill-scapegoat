@@ -25,11 +25,11 @@ jobs:
       FORCE_COLOR: "1"
     steps:
       - name: Checkout current branch
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
         with:
           fetch-depth: 0
       - name: Restore cache
-        uses: coursier/cache-action@v8.1.0
+        uses: coursier/cache-action@v8.1.1
         id: coursier-cache
       - name: Setup JVM
         uses: coursier/setup-action@v3.0.0
