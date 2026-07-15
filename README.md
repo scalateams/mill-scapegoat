@@ -36,10 +36,10 @@ done compiling
 
 ### Overriding Scala compiler options:
 
-Make sure you include `super.scalacOptions()` or `scapegoatScalacOptions()` directly when overriding `scalacOptions` so that plugins options are included.
+`mill-scapegoat` injects the Scapegoat compiler plugin options by overriding `def allScalacOptions: T[Seq[String]]`. In the unlikely case that you override this method in your project, make sure to include `super.allScalacOptions()` or call `scapegoatScalacOptions()` directly so that the plugin options are preserved.
 
 ```scala
-override def scalacOptions = super.scalacOptions() ++ Seq("some", "options")
+override def allScalacOptions = super.allScalacOptions() ++ Seq("some", "other", "options")
 ```
 
 ## Related projects

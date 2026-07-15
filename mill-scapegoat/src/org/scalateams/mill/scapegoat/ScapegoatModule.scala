@@ -98,7 +98,7 @@ trait ScapegoatModule extends ScalaModule {
   /** Scapegoat version to use. */
   def scapegoatVersion: T[String]
 
-  override def scalacOptions: T[Seq[String]] = super.scalacOptions() ++ scapegoatScalacOptions()
+  override def allScalacOptions: T[Seq[String]] = super.allScalacOptions() ++ scapegoatScalacOptions()
 
   private def scapegoatPluginClasspath: T[Seq[PathRef]] = Task {
     defaultResolver().classpath(
