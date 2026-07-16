@@ -10,6 +10,6 @@ import mill.scalalib.*
 object `package` extends ScapegoatModule {
 
   def scalaVersion     = "2.13.18"
-  def scalacOptions    = super.scalacOptions() ++ Seq("-Ywarn-unused")
+  def scalacOptions    = Seq("-Ywarn-unused")
   def scapegoatVersion = "3.2.4"
 }
