@@ -4,11 +4,9 @@
 //| - https://central.sonatype.com/repository/maven-snapshots
 //| - https://oss.sonatype.org/content/repositories/snapshots
 //| mvnDeps:
-//| - com.goyeau::mill-git::0.3.2
 //| - com.goyeau::mill-scalafix::0.6.0
 //| - com.lihaoyi::mill-contrib-buildinfo:$MILL_VERSION
 
-import com.goyeau.mill.git.{GitVersionModule, GitVersionedPublishModule}
 import com.goyeau.mill.scalafix.StyleModule
 import mill.*
 import mill.api.Task.Simple
@@ -16,6 +14,7 @@ import mill.contrib.buildinfo.*
 import mill.scalalib.*
 import mill.scalalib.publish.*
 import mill.scalalib.scalafmt.*
+import mill.util.VcsVersion
 
 val Description  = "A scapegoat plugin for Mill build tool"
 val Developers   = Seq(
@@ -27,12 +26,7 @@ val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")
 
-object `mill-scapegoat`
-    extends BuildInfo
-    with GitVersionedPublishModule
-    with ScalaModule
-    with SonatypeCentralPublishModule
-    with StyleModule {
+object `mill-scapegoat` extends BuildInfo with ScalaModule with SonatypeCentralPublishModule with StyleModule {
 
   val millVersion = "1.0.0"
 
@@ -51,7 +45,7 @@ object `mill-scapegoat`
     mvn"com.lihaoyi::mill-libs-scalalib:$millVersion",
   )
 
-  override def pomSettings    = PomSettings(
+  override def pomSettings = PomSettings(
     description = Description,
     organization = Organization,
     url = Url,
@@ -59,7 +53,12 @@ object `mill-scapegoat`
     versionControl = VC,
     developers = Developers,
   )
-  override def publishVersion = GitVersionModule.version(withSnapshotSuffix = true)()
+
+  override def publishVersion = Task.Input {
+    val state = VcsVersion.calcVcsState(Task.log)
+    if (Task.env.contains("CI")) state.copy(dirtyHash = None).format()
+    else state.format()
+  }
 
   override def scalacOptions = super.scalacOptions() ++
     Seq(
