@@ -15,8 +15,8 @@ import mill.scalalib.*
 
 object project extends ScalaModule with ScapegoatModule {
 
-  def scalaVersion     = "3.3.7"
-  def scapegoatVersion = "3.2.4"
+  def scalaVersion     = "3.3.8"
+  def scapegoatVersion = "3.3.6"
 }
 ```
 
