@@ -11,5 +11,5 @@ object `package` extends ScapegoatModule {
 
   def scalaVersion     = "2.13.18"
   def scalacOptions    = Seq("-Ywarn-unused")
-  def scapegoatVersion = "3.2.4"
+  def scapegoatVersion = "3.3.6"
 }
