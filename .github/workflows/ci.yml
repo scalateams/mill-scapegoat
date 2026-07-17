@@ -18,7 +18,7 @@ on:
       - edited
       - published
 concurrency:
-  cancel-in-progress: ${{ github.event_name == 'pull_request'  }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
 jobs:
   ci:
