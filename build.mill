@@ -73,10 +73,9 @@ object `mill-scapegoat` extends BuildInfo with ScalaModule with SonatypeCentralP
       "-language:implicitConversions",
       "-unchecked",
       "-explain-cyclic",
-      "-noindent",
-      "-rewrite",
+      "-no-indent",
+      "-Werror",
       "-Wunused:all",
-      "-Xfatal-warnings",
     )
   override def scalaVersion  = "3.7.4"
 
