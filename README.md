@@ -9,14 +9,14 @@ A [scapegoat](https://github.com/sksamuel/scapegoat) plugin for Mill build tool.
 *build.mill*:
 ```scala
 //| mvnDeps:
-//| - org.scalateams::mill-scapegoat::0.1.0
+//| - org.scalateams::mill-scapegoat::0.2.0
 import org.scalateams.mill.scapegoat.ScapegoatModule
 import mill.scalalib.*
 
 object project extends ScalaModule with ScapegoatModule {
 
-  def scalaVersion     = "3.3.7"
-  def scapegoatVersion = "3.2.4"
+  def scalaVersion     = "3.3.8"
+  def scapegoatVersion = "3.3.6"
 }
 ```
 

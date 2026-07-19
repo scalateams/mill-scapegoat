@@ -23,11 +23,7 @@ val ProjectName  = "mill-scapegoat"
 val Url          = "https://github.com/scalateams/mill-scapegoat"
 val VC           = VersionControl.github("scalateams", "mill-scapegoat")
 
-object `mill-scapegoat`
-    extends BuildInfo
-    with ScalaModule
-    with SonatypeCentralPublishModule
-    with StyleModule {
+object `mill-scapegoat` extends BuildInfo with ScalaModule with SonatypeCentralPublishModule with StyleModule {
 
   val millVersion = "1.0.0"
 
@@ -46,7 +42,7 @@ object `mill-scapegoat`
     mvn"com.lihaoyi::mill-libs-scalalib:$millVersion",
   )
 
-  override def pomSettings    = PomSettings(
+  override def pomSettings = PomSettings(
     description = Description,
     organization = Organization,
     url = Url,
@@ -54,6 +50,7 @@ object `mill-scapegoat`
     versionControl = VC,
     developers = Developers,
   )
+
   override def publishVersion = Task.Input {
     val state = VcsVersion.calcVcsState(Task.log)
     if (Task.env.contains("CI")) state.copy(dirtyHash = None).format()

@@ -12,7 +12,7 @@ object `package` extends ScapegoatModule {
   def scalaVersion = "2.13.18"
   def scalacOptions = Seq("-Ywarn-unused")
 
-  def scapegoatVersion = "3.2.4"
+  def scapegoatVersion = "3.3.6"
   def scapegoatDisabledInspections = Seq("VariableShadowing", "ZeroNumerator")
   def scapegoatEnabledInspections = Seq("VarCouldBeVal", "OptionGet")
   def scapegoatIgnoredFiles = Seq(".*/Bar.scala")
@@ -61,7 +61,7 @@ true
 
 > ./mill show __.scapegoatScalacOptions
 [
-  "-Xplugin:.../v1/https/repo1.maven.org/maven2/com/sksamuel/scapegoat/scalac-scapegoat-plugin_2.13.18/3.2.4/scalac-scapegoat-plugin_2.13.18-3.2.4.jar",
+  "-Xplugin:.../v1/https/repo1.maven.org/maven2/com/sksamuel/scapegoat/scalac-scapegoat-plugin_2.13.18/3.3.6/scalac-scapegoat-plugin_2.13.18-3.3.6.jar",
   "-P:scapegoat:dataDir:.../out/scapegoatOutput.dest",
   "-P:scapegoat:consoleOutput:true",
   "-P:scapegoat:verbose:true",
@@ -77,7 +77,7 @@ true
 true
 
 > ./mill show __.scapegoatVersion
-"3.2.4"
+"3.3.6"
 
 > ./mill __.compile
 ...
